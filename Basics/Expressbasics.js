@@ -13,7 +13,7 @@ app.use((req, res, next)=>{
 
 // creating a middlerware to convert json to redable, this converts data to urlencoded and back
 // its actually Parser
-app.use(express.json);
+app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 {/* app.get(route, requsetHandler)   ====>   This is basic Structure of Setting a route 
