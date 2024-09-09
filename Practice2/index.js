@@ -22,6 +22,21 @@ app.get('/file/:filename', (req, res)=>{
     })
 })
 
+app.get('/edit/:filename', (req, res)=>{
+    fs.readFile(`./files_task/${req.params.filename}`,"utf-8", (err,fileData)=>{
+        console.log(fileData)
+        res.render("edit", {taskname: req.params.filename , taskdata: fileData })
+    })
+})
+
+app.post('/edit', (req, res)=>{
+    //console.log(req.body)
+    //console.log(req.body.prevName)
+    fs.rename(`./files_task/${req.body.prevName}`,`./files_task/${req.body.newName}`, (err)=>{
+        res.redirect("/");
+    } )
+})
+
 app.post('/create',(req, res)=>{
    // console.log(req.body)
     fs.writeFile(`./files_task/${req.body.title.split(` `).join('')}.txt`, req.body.title, (err)=>{

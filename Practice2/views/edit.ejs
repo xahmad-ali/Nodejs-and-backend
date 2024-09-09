@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="w-full h-screen p-10 bg-zinc-900">
+        <div class="text-white mt-2">
+            <a class="bg-blue-600 py-2 px-2 mt-2 inline-block rounded-md" href="/">Go Back</a>
+            <!--  <h1 class="py-3 px-3 mt-3 font-bold "><%= taskname%></h1> -->
+            <form action="/edit" method="post" >
+                <input class="bg-slate-500 py-2 px-2 mt-2 w-1/2 outline-none rounded-md" type="text" value="<%= taskname %>"  name="prevName"/>
+                <input class="bg-slate-500 py-2 px-2 mt-2 w-1/2 outline-none rounded-md" type="text" placeholder="Write new name .." name="newName" />
+                <input class="bg-blue-600 py-2 px-2 mt-2 block cursor-pointer rounded-md" type="submit" value="Save"/>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
