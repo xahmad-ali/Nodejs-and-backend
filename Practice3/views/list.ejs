@@ -23,7 +23,7 @@
                 <div class=" text-xs text-zinc-500"> <%= e.email %></div>
                 <div class="flex gap-7 mt-10 font-semibold cursor-pointer">
                     <a class="text-zinc-300 " href="">Edit User</a>
-                    <a class="text-red-400 " href="">Delete User</a>
+                    <a class="text-red-400 " href="/delete/<%= e.email %>">Delete User</a>
                 </div>
             </div>
        <% }) %>

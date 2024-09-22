@@ -34,6 +34,7 @@ app.post("/create", async (req, res) => {
   res.send(createdUser);
 });
 
+//////////////////////////
 app.get("/read", async (req, res) => {
   //find()  simply displays all users returns an array
   //If find({findone}) if a parameter is passed, it returns that user with that matched attribute
@@ -44,6 +45,7 @@ app.get("/read", async (req, res) => {
   res.render("list", { users });
 });
 
+//////////////////////////
 app.get("/update", async (req, res) => {
   //findOneAndUpdate({findone "pass username or email or id"}, {update "attribute and its new value "} , {new : true})
   //updateOne({findone}, {update}, {new :true})
@@ -55,11 +57,13 @@ app.get("/update", async (req, res) => {
   res.send(user);
 });
 
-
-app.get('/delete', async(req, res)=>{
+///////////////////////////
+app.get('/delete/:email', async(req, res)=>{
     // only returns deleted user once
-    let user = await userModel.findOneAndDelete({userName: "ahmad"})
-    res.send(user)
+    let email = req.params.email
+    console.log(email)
+    let userDeleted = await userModel.findOneAndDelete({email})
+    res.send(userDeleted)
 })  
 
 app.listen(3000);
