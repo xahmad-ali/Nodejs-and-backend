@@ -8,21 +8,22 @@
 </head>
 <body>
 
-    <div class="w-full h-screen bg-zinc-900 p-8 text-white">
-        <div class=" text-blue-600">
+    <div class="w-full h-screen bg-[#C786F3] p-8 text-white">
+        <div class=" text- font-semibold">
             <a href="/">Create More</a>
         </div>
-        <h1 class="font-semibold text-3xl mb-5 ">All Registered Users</h1>
+        <h1 class="font-semibold text-3xl mb-5 text-[#4D0C51]">All Registered Users</h1>
         <div class="users flex gap-3 flex-wrap">
             <% users.forEach((e)=>{ %>
-            <div class="users w-72 p-4 bg-zinc-800 rounded-lg">
-                <div class="w-full h-52 bg-slate-600 rounded-lg overflow-hidden">
-                    <img class="w-full h-full object-cover object-center" src="<%= e.url %>" alt=""/>
-                </div>
-                <div class=" mt-2 mb-1 text-xl tracking-tighter"> <%= e.userName %></div>
-                <div class=" text-xs text-zinc-500"> <%= e.email %></div>
-                <div class="flex gap-7 mt-10 font-semibold cursor-pointer">
-                    <a class="text-zinc-300 " href="">Edit User</a>
+            <div class="users w-72 p-4 bg-[#674380] rounded-lg">
+                
+                <div class=" mt-2 mb-1 text-xl tracking-tighter"> <%= e.firstName + ' ' + e.lastName %></div>
+                <div class=" text-xs ">email: <%= e.email %></div>
+                <div class=" text-xs ">gender: <%= e.gender %></div>
+                <div class=" text-xs ">subject: <%= e.subjects %></div>
+                <div class=" text-xs ">belongs from: <%= e.city %></div>
+                <div class="flex gap-7 mt-4 font-semibold cursor-pointer">
+                    <a class="text-[#cfc1da] " href="/edit/<%= e.email %>">Edit User</a>
                     <a class="text-red-400 " href="/delete/<%= e.email %>">Delete User</a>
                 </div>
             </div>

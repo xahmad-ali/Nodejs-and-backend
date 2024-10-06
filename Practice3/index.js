@@ -14,24 +14,38 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create", async (req, res) => {
-  let { userName, email, url, gender } = req.body;
+  let { firstName, lastName, email, city, gender, description, subjects } =
+    req.body;
+  if (
+    firstName ||
+    lastName ||
+    email ||
+    city ||
+    gender ||
+    description ||
+    subjects
+  ) {
+    let createdUser = await userModel.create({
+      /* userName: userName  */
+      firstName, // if both property names are same then can be written like this
+      lastName,
+      email,
+      city,
+      gender,
+      description,
+      subjects,
+    });
 
-  let createdUser = await userModel.create({
-    /* userName: userName  */
-    userName, // if both property names are same then can be written like this
-    email,
-    url,
-    gender,
-  });
-
-  /* let user = await userModel.create({
+    /* let user = await userModel.create({
         name: "ahmad",
         userName: "Ahmi",
         email: "ahmad@gmail.com"
     })  */
 
-  // always use send instead of render or it will ceate error
-  res.send(createdUser);
+    // always use send instead of render or it will ceate error
+    //res.send(createdUser);
+    res.redirect("/read")
+  }
 });
 
 //////////////////////////
@@ -45,25 +59,35 @@ app.get("/read", async (req, res) => {
   res.render("list", { users });
 });
 
+///
+app.get("/edit/:email", async(req,res)=>{
+  let user = await userModel.findOne({email: req.params.email}) 
+  //console.log(user)
+  res.render("edit", { user })
+})
 //////////////////////////
-app.get("/update", async (req, res) => {
+app.get("/update/:email", async (req, res) => {
   //findOneAndUpdate({findone "pass username or email or id"}, {update "attribute and its new value "} , {new : true})
   //updateOne({findone}, {update}, {new :true})
-  let user = await userModel.findOneAndUpdate(
-    { name: "ahmad" },
-    { name: "Ali" },
-    { new: true }
-  );
-  res.send(user);
+
+ 
 });
 
 ///////////////////////////
-app.get('/delete/:email', async(req, res)=>{
-    // only returns deleted user once
-    let email = req.params.email
-    console.log(email)
-    let userDeleted = await userModel.findOneAndDelete({email})
-    res.send(userDeleted)
-})  
+app.get("/delete/:email", async (req, res) => {
+  // only returns deleted user once
+  let email = req.params.email;
+  console.log(email);
+  let userDeleted = await userModel.findOneAndDelete({ email });
+  res.redirect("/read")
+});
 
+/*
+app.get('/delete-null', async(req, res)=>{
+  // only returns deleted user once
+  //let email = req.params.email
+  // console.log(email)
+  let userDeleted = await userModel.findOneAndDelete({email:""})
+  res.send(userDeleted)
+}) */
 app.listen(3000);

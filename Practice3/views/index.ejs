@@ -1,30 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
 
-    <div class="w-full h-screen bg-zinc-900 text-white p-3">
-        <div class=" text-blue-600 m-3">
-            <a href="/read">Users List</a>
+    <div class="bg-slate-500 h-screen w-full flex ">
+        <img class=" bg-red-700 flex-[0.3] "
+            src="https://img.freepik.com/free-photo/curly-woman-eyeglasses-blue-shirt-takes-notes-her-notebook-pretty-young-girl-school-clothes-sitting-table_197531-27645.jpg" />
+        <div class=" bg-[#C786F3] flex-[0.7] flex flex-col justify-center items-center">
+            <h1 class="font-bold text-[#401042] text-4xl flex " >Registration</h1>
+
+            <form class="m-5" action="/create" method="post">
+                <div class=" flex gap-40 p-3">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[#4D0C51] font-bold">First Name</label>
+                        <input class="font-semibold border-2 border-[#EFCDF2] outline-none h-10 w-64 rounded-md" 
+                        name="firstName" />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[#4D0C51] font-bold">Last Name</label>
+                        <input class="font-semibold border-2 border-[#EFCDF2] outline-none  h-10 w-64 rounded-md" 
+                        name="lastName"/>
+                    </div>
+                </div>
+
+
+                <div class="flex gap-40 p-3">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[#4D0C51] font-bold">Email</label>
+                        <input class="font-semibold border-2 border-[#EFCDF2] outline-none h-10 w-64 rounded-md" 
+                        name="email"/>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label class="text-[#4D0C51] font-bold">City</label>
+                        <input class="font-semibold border-2 border-[#EFCDF2] outline-none  h-10 w-64 rounded-md"
+                           list="cities"  name="city" />
+                          <datalist id="cities">
+                            <option value="Lahore">
+                            <option value="Islamabad">
+                            <option value="Faisalabad">
+                            <option value="Karachi">
+                            <option value="Hyderabad">
+                            <option value="Peshawar">
+                          </datalist>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-1 p-3">
+                    <p class="text-[#4D0C51] font-bold">Description</p>
+                    <textarea
+                        class="font-semibold border-2 border-[#EFCDF2] outline-none  w-full resize-none rounded-md"
+                        rows="3" name="description"></textarea>
+                </div>
+
+                <div class=" flex flex-row text-[#4D0C51] p-3">
+                    <p class="font-bold ">Gender</p>
+                    <div class=" m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="gender" value="Male"/>
+                        <label>Male</label>
+                    </div>
+
+                    <div class="m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="gender" value="Female"/>
+                        <label>Female</label>
+                    </div>
+
+                    <div class="m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="gender" value="Others"/>
+                        <label>Others</label>
+                    </div>
+                </div>
+
+                <div class=" flex flex-row text-[#4D0C51] p-3">
+                    <p class="font-bold ">Choose Subject</p>
+                    <div class=" m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="subjects" value="Web dev"/>
+                        <label>Web dev</label>
+                    </div>
+
+                    <div class="m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="subjects" value="OS"/>
+                        <label>OS</label>
+                    </div>
+
+                    <div class="m-3 font-bold">
+                        <input class="cursor-pointer" type="radio" name="subjects" value="OOP"/>
+                        <label>OOP</label>
+                    </div>
+                </div>
+
+
+                <div class="flex flex-row justify-center items-center ">
+                <input class="bg-[#741A7B] cursor-pointer rounded-md text-white font-bold w-56 h-10" placeholder="Submit" type="submit" />
+                </div>
+
+
+                <!--   <div class="border-black border-2 h-12 flex gap-40 ">
+                    <div class="flex gap-2 items-center">
+                        <label class="text-black font-bold">Email</label>
+                        <input class="border-2 border-slate-400 h-10 rounded-lg" />
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <label class="text-black font-bold">Phone Number</label>
+                        <input class="border-2 border-slate-400 h-10 rounded-lg" />
+                    </div>
+                </div>   -->
+
+
+            </form>
+
         </div>
-        <form action="/create" method="post">
-            <input class="border-2 border-zinc-800 bg-transparent m-4 p-3 rounded-md " name="userName"  placeholder="UserName.."/>
-            <input class="border-2 border-zinc-800 bg-transparent m-4 p-3 rounded-md " name="email"  placeholder="Email.."/>
-            <input class="border-2 border-zinc-800 bg-transparent m-4 p-3 rounded-md " name="url"  placeholder="ImageURL.."/>
-            <!-- to make single optional radio button you have to assign them same name  -->
-            <input class="" type="radio" name="gender"/>
-            <label>Male</label>
-            <input class="" type="radio" name="gender"/>
-            <label>Female</label>
-            <input class="bg-blue-600 rounded-lg m-4 p-3 cursor-pointer" type="submit" value="Create User"/>
-        </form>
+
     </div>
-   
-    
+
 </body>
+
 </html>
