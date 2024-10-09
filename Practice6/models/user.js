@@ -8,6 +8,10 @@ const userScheme = mongose.Schema({
     email: String,
     age: Number,
     password: String,
+    avatar:{
+        type: String,
+        default: "default.png"
+    },
     // attribute that have reffernces of posts, it's an array
     // post=> an array of objects, conatains refferences of objectId of post model
     posts: [

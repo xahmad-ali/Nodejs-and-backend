@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const multer  = require('multer');
 const crypto = require('crypto'); //-> it is prefined javaScript library
+const user = require('./models/user');
 
 app.use(cookieParser());
 app.use(express.json());
@@ -139,11 +140,15 @@ app.post("/update/:id",isloggedIn ,async(req, res)=>{
 
 
 ////////////////////
-app.post("/upload",upload.single('image'),isloggedIn,(req,res)=>{
+app.post("/upload",upload.single('image'),isloggedIn, async(req,res)=>{
     console.log(req.file)
-    //console.log(req.body)
+    let user = await userModel.findOne({email: req.user.email})
+    user.avatar = req.file.filename;
+    await user.save();
     res.redirect("/profile");
 })
+
+
 
 // middleware isloggegin
 function isloggedIn(req,res,next){
